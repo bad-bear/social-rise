@@ -1,0 +1,79 @@
+---
+- host:
+  remote_user:
+  become:
+  become_method:
+  tasks:
+  
+  - name: Update System 
+    apt:
+      update_cache: yes
+
+  - name: Upgrade System Packages
+    apt:
+      name: "*"
+      state: latest
+
+  - name: Install Python Packages
+    apt:
+      pkg:
+      - python3
+      - python3-pip
+      - python3-virtualenv
+      - python3-setuptools
+
+  - name: Create production folder
+    command: mkdir production
+
+  - name: Create virtual folder
+    command: mkdir production/pyENV
+
+  - pip:
+    name: numpy
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: pandas
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: scikit
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: scikit-learn
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: nltk
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: gensim
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: Pyro4
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: networkx
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: matplotlib
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
+
+  - pip:
+    name: tweepy
+    virtualenv: /production/pyENV
+    virtualenv_site_packages: yes
